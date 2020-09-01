@@ -2,6 +2,7 @@
 
 ; INTEGRANTES:
 ; Aba Isabel Cruz Ramos A01138741
+; Roberto García Torres A00822089
 ; Edgar Rubén Salazar Lugo A01338798
 
 
@@ -12,23 +13,19 @@
 
 
 ; PROBLEMA 3
-(define (insert-between v xs)
-  (cond ((null? xs) xs)
-        ((null? (cdr xs)) xs)
-        (else (cons (car xs)
-                    (cons v (insert-between v (cdr xs)))))))
-(define (display-all . vs)
-  (for-each display (insert-between " " vs)))
+(define (printSort x y z)
+  (display x) (display " ") (display y) (display " ") (display z)
+  )
 
 (define (ordena x y z)
   (cond
-    [(and (> x y)(> x z)) (if (> y z) (display-all z y x) (display-all y z x))]
-    [(and (> y x)(> y z)) (if (> x z) (display-all z x y) (display-all x z y))]
-    [(and (> z x)(> z y)) (if (> x y) (display-all y x z) (display-all x y z))]    
-    [(= x y) (if (> x z) (display-all z y x) (display-all y x z))]
-    [(= x z) (if (> x y) (display-all y z x) (display-all z x y))]
-    [(= y z) (if (> y x) (display-all x y z) (display-all y z x))]
-    [else (display-all x y z)]
+    [(and (> x y)(> x z)) (if (> y z) (printSort z y x) (printSort y z x))]
+    [(and (> y x)(> y z)) (if (> x z) (printSort z x y) (printSort x z y))]
+    [(and (> z x)(> z y)) (if (> x y) (printSort y x z) (printSort x y z))]    
+    [(= x y) (if (> x z) (printSort z y x) (printSort y x z))]
+    [(= x z) (if (> x y) (printSort y z x) (printSort z x y))]
+    [(= y z) (if (> y x) (printSort x y z) (printSort y z x))]
+    [else (printSort x y z)]
     )
   )
 
